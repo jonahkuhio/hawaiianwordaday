@@ -1,0 +1,39 @@
+<% if @classifieds.blank? %>
+
+
+<p>There are not any words in the system </p>
+<%else%>
+<p>These are the current Hawaiian words in our system </p>
+<%= text_field "classified", "title" -%>
+
+<%= observe_field :classified_title,
+ :frequency => 1.0,
+ :update => 'classifieds',
+ :loading => 'Element.show("loading")',
+ :complete => 'Element.hide("loading")',
+ :url => { :controller => 'classified', :action => 'search' },
+ :with => "'search=' + encodeURIComponent(value)"
+%>
+<div id="loading" style="display:none;"><p>Searching...</P></div>
+<ul id="classifieds">
+</ul>
+<% previous_day = "" %>
+<% @classifieds.each do |classified| %>
+<% if classified.created_at.strftime("%m/%d/%Y").to_s!= previous_day %>
+	<h4><%= classified.created_at.strftime("%B %d, %Y") %></h4>
+	<% end %>
+	<p class="classified">
+		<%= link_to classified.title, {:action=> 'show', :id => classified.id} -%>
+		<% if can_edit?(classified) %>
+		<%= admin_tools_for (classified) %>
+		<% end %>
+		</p>
+		<% previous_day = classified.created_at.strftime("%m/%d/%Y").to_s %>
+		<% end %>
+<% end %>
+
+	
+	
+<% if logged_in? %>
+<p>    <%= link_to "Add new word", {:action => 'new' }%></p>
+<% end %>

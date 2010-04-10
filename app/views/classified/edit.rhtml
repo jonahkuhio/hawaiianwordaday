@@ -1,0 +1,21 @@
+<h1>Editing Classified: <%= @classified.title -%></h1>
+
+<%= start_form_tag ({:action => 'update', :id => @classified}, :multipart => true) %>
+
+	<p><label for="classified_title">Word</label><br />
+	<%= text_field 'classified', 'title' %></p>
+	
+	<p><label for="classified_location">Definition</label><br />
+	<%= text_field 'classified', 'location' %></p>
+	
+	<p><label for="classified_description">Description</label><br />
+	<%= text_area 'classified', 'description' %></p>
+	
+	<p><label for="classified_category">Category</label><br />
+	<%= collection_select(:classified, :category_id, @categories, :id, :name) %></p>	
+	
+	
+	<%= submit_tag "Save changes" %>
+<%= end_form_tag %>
+
+<%= link_to 'Back', {:action => 'list'} %>

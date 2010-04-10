@@ -1,0 +1,3 @@
+page.alert 'Word successfully sent.'
+page.form.reset 'contact_form'
+page.hide 'contact_seller'

@@ -1,0 +1,49 @@
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xml-lang='en-US'>
+	  <head>
+	    <title>Jonasloco</title>
+	<meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
+	<%=stylesheet_link_tag "style" %>
+	<%= javascript_include_tag :defaults %>
+	</head>
+	<body id="Jonas-loco">
+		<div id="container">
+			<div id="header">
+				<h1>Hawaiian Word-a-day</h1>
+				<h3>Hawaiian Words Daily by Email</h3>
+			</div>
+			<div id="content">
+				<%= yield -%>
+				</div>
+				<div id="sidebar">
+					<%= form_remote_tag(:url => {:action => 'email'}, :multipart => true) -%>
+					Receive a word a day to your email! <br /><br />
+					E-mail: <%= text_field "user", "email" -%><br />
+					<%= submit_tag 'Sign Up' -%>
+					<%= end_form_tag -%>	
+				
+					<% unless session[:user] %>
+					<small><p>Admin <%= link_to_function('Login', "Element.show('admin')") %></p>
+					<div id="admin" style="display: none;"></small>
+						
+					
+				<%= start_form_tag({:controller => 'user', :action => 'login'}, {:id =>  "login_form"}) -%>	
+				<label for="user_login">Admin:</label><br />
+				<%= text_field :user, :login -%><br />
+				<label for="user_login">Password:</label><br />
+				<%= password_field :user, :password -%><br />
+				<%= submit_tag 'login' -%>
+				<%= end_form_tag%>
+			
+				<% else %>
+				<p><%= "Welcome #{session[:user].login}!" -%></p>
+				<p><%= link_to 'View My Profile', :controller => 'user', :action => 'show', :login => session[:user].login -%> | 
+				<%= link_to 'Logout', :controller => 'user', :action => 'logout' -%></p>
+				<% end %>
+				</div>
+				
+				<br /><h3>Categories</h3>
+				<%= cloud(Category.find(:all, :order => "name ASC")) %>
+				</div></div>
+				</body>
+				</html>

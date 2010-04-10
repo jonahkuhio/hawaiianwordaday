@@ -1,0 +1,2 @@
+page.alert 'Word successfully sent.'
+page.hide 'email'

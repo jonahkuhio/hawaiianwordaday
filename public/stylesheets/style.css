@@ -1,0 +1,66 @@
+*{ margin: 0; padding:0;
+}
+body { font-family: Helvetica, Geneva, Arial, sans-serif; font-size: small; font-color: #000; background-color: #fff;
+}
+a:link, a:active, a:visited { color: #CD0000;
+}
+79
+RAILS SOLUTIONS: RAILS MADE EASY
+80
+a:hover { color: #F70000;
+} input {	margin-bottom: 5px;} p { line-height: 150%; }
+div#container { width: 760px; margin: 0 auto;
+}
+div#header { text-align: center; padding-bottom: 15px;
+}
+div#content { float: left; width: 450px; padding: 10px;
+}
+div#content h3 { margin-top: 15px;
+}
+ul#classifieds { list-style-type: none;
+}
+ul#classifieds li { line-height: 140%;
+}
+ul#categories{ width: 700px; text-align: center; padding: 5px; background-color: #ececec; border: 1px solid #ccc; margin_bottom: 20px;
+}
+ul#categories li { display:inline; padding-left: 5px;
+}
+ul#category_list{ padding: 20px; list_style_type: square;
+}
+ul#category_list li { line-height: 140%;
+}
+div#sidebar { width: 200px; margin-left: 480px;  margin-top: 50px;
+}
+div#contact_seller { padding: 10px;
+}	
+div#contact_seller input { margin-top: 5px;
+}
+div#email { padding: 10px; background-color: #ececec; border: 1px solid #cecece;
+}
+fieldset { display: block; width: 255px; margin: 20px; padding: 10px; background-color: #eee;
+}
+fieldset > label { display: block; font-weight: bold; margin-bottom: 2px; 
+}
+form#login_form { padding: 3px; border: 1px solid #ccc;
+}
+form#login_form label {font-size: 80%;
+}
+form#login_form input[type=text],
+form#login_form input[type=password] { width: 150px;
+}
+a.admintools {font-size: 75%; margin-right: 3px; color: #333;
+}
+div#loading {padding: 5px; font-weight: bold; font-size: 110%;
+}
+div#loading p {font-weight: bold; font-size: 110%;
+}
+ul#classifieds{ list-style-type: none;
+}
+ul#classifieds li {background-color: #ececec; padding: 5px; font-weight: bold; line-height: 140%;
+}
+div.vcard {padding: 15px; margin: 5px; border: 1px solid #ccc; background-color: #ececec; font-size: 120%;
+}
+span.fn {display: block; width: 100%; font-size: 110%; font-weight: bold;
+}
+a.email {display: block; width: 100%; padding-top: 5px;
+}

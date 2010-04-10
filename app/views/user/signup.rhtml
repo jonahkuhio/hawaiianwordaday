@@ -1,0 +1,19 @@
+<h3>Signup</h3>
+<%= error_messages_for 'user' -%>
+
+<%= start_form_tag({:action => 'signup'}) -%>
+<fieldset>
+	<label for="user_login">Desired Login: 
+		<%= text_field :user, :login -%></label>
+	<label for="user_password">Password: 
+		<%= password_field :user, :password -%></label>
+	<label for="user_email">Your Email: 
+		<%= text_field :user, :email -%></label>
+	<label for="user_email_confirmation">Confirm Email: 
+		<%= text_field :user, :email_confirmation -%></label>
+		
+<%= submit_tag 'Create my account' -%>
+</fieldset>
+<%= end_form_tag %>
+		
+		

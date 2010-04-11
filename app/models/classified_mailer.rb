@@ -13,7 +13,6 @@ class ClassifiedMailer < ActionMailer::Base
     #       attachment :body => classified.picture, :content_type => classified.content_type
       
   end
-end
 
   def word_with_attachment(email, classified, url, sent_at = Time.now)
     @subject    = 'Hawaiian Word of the Day'
@@ -28,6 +27,5 @@ end
     #       attachment :body => classified.picture, :content_type => classified.content_type
       
   end
-end
 
 end

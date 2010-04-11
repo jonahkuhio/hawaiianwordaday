@@ -16,9 +16,9 @@
 				<%= yield -%>
 				</div>
 				<div id="sidebar">
-					<% form_remote_tag(:url => {:action => 'email'}, :multipart => true) do %>
+					<% form_tag(email_subscriptions_path) do %>
 					Receive a word a day to your email! <br /><br />
-					E-mail: <%= text_field "user", "email" -%><br />
+					E-mail: <%= text_field :email_subscription, :email -%><br />
 					<%= submit_tag 'Sign Up' -%>
 					<% end %>	
 				

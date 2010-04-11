@@ -24,6 +24,7 @@ class ClassifiedsController < ApplicationController
       render :action => 'new'
     end
   end
+  
   def edit
     @classified = Classified.find(params[:id])
     @categories = Category.find(:all)
@@ -38,6 +39,7 @@ class ClassifiedsController < ApplicationController
       render :action => 'edit'
     end
   end
+  
   def search
     @classifieds = Classified.find(:all, :conditions => ["lower(title) like ?", "%" + params[:search].downcase + "%"])
     if params['search'].to_s.size < 1
@@ -62,10 +64,12 @@ class ClassifiedsController < ApplicationController
     return if request.xhr?
     render :nothing => true
   end
+  
   def image
     @image = Classified.find(params[:id])
     send_data @image.picture, :filename => "photo.jpg", :type => @image.content_type, :disposition => "inline"
   end
+  
   def email
     @classified = Classified.find(params[:id])
     url = "#{request.env["SERVER_NAME"]}/classified/#{@classified.id}"

@@ -1,18 +1,8 @@
-require File.dirname(__FILE__) + '/../test_helper'
-require 'user_controller'
+require 'test_helper'
 
-# Re-raise errors caught by the controller.
-class UserController; def rescue_action(e) raise e end; end
-
-class UserControllerTest < Test::Unit::TestCase
-  def setup
-    @controller = UserController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-  end
-
+class UsersControllerTest < ActionController::TestCase
   # Replace this with your real tests.
-  def test_truth
+  test "the truth" do
     assert true
   end
 end

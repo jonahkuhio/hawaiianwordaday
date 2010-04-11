@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 5) do
+ActiveRecord::Schema.define(:version => 20100411015426) do
 
   create_table "categories", :force => true do |t|
     t.string "name"
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(:version => 5) do
     t.string   "content_type",                       :default => "image/png"
     t.binary   "picture",      :limit => 2147483647
     t.integer  "user_id"
+  end
+
+  create_table "email_subscriptions", :force => true do |t|
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sessions", :force => true do |t|

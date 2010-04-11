@@ -1,10 +1,8 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require 'test_helper'
 
-class ClassifiedTest < Test::Unit::TestCase
-  fixtures :classifieds
-
+class ClassifiedTest < ActiveSupport::TestCase
   # Replace this with your real tests.
-  def test_truth
+  test "the truth" do
     assert true
   end
 end

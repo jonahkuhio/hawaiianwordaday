@@ -5,7 +5,7 @@
 	<p>
 	<strong>Definition: </strong> <%= @classified.location %><br />
 	<% if not @classified.category.blank? %>
-	<strong>Category: </strong> <%= link_to @classified.category.name, :controller => "category", :action => "show", :id => @classified.category.id %><br />
+	<strong>Category: </strong> <%= link_to @classified.category.name, category_path(@classified.category) %><br />
 	<%end%>	
 	<br />
 	<strong>Word in Context: </strong> 
@@ -23,10 +23,10 @@
 
 
 <div id="email" style="display: none;">
-	<%= form_remote_tag(:url => {:action => 'email', :id => @classified.id}, :multipart => true) -%>
+	<% form_remote_tag(:url => {:action => 'email', :id => @classified.id}, :multipart => true) do -%>
 	E-mail: <%= text_field "user", "email" -%><br />
 	<%= submit_tag 'Email Word' -%>
-	<%= end_form_tag -%>
+	<% end -%>
 	</div>
 <br />
 <%= link_to 'Back', home_url %>

@@ -1,5 +1,5 @@
 <li id="category_<%= category.id%>">
-	<%= link_to category.name, :action => 'show', :id => category.id %>
+	<%= link_to category.name, category_path(category) %>
 	<%= "(#{category.classifieds.count})" -%>
 	<small><%=link_to_remote 'Delete', :url => {:action => 'delete', :id => category} -%></small>
 	</li>

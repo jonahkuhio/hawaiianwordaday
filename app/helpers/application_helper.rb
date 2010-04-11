@@ -19,7 +19,7 @@ module ApplicationHelper
     categories.each do |c|
       size = 100 * c.classifieds.count / mid
       size = 75 if size < 75
-      output << link_to(c.name, {:controller => "category", :action => "show", :id => c}, :style => "font-size: #{size}%") << " "
+      output << link_to(c.name, category_path(c), :style => "font-size: #{size}%") << " "
     end
     return output
   end

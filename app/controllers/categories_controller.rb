@@ -1,7 +1,7 @@
-class CategoryController < ApplicationController
+class CategoriesController < ApplicationController
   layout 'standard'
   before_filter :logged_in?, :except => [:show]
-  def list
+  def index
     @categories = Category.find(:all)
   end
   
@@ -27,7 +27,7 @@ class CategoryController < ApplicationController
   protected
   def logged_in?
     unless session[:user]
-      redirect_to :controller => 'classified', :action => 'list'
+      redirect_to classifieds_path
     else
       return true
     end

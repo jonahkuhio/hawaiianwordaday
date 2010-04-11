@@ -1,5 +1,5 @@
-class ClassifiedController < ApplicationController
-  def list
+class ClassifiedsController < ApplicationController
+  def index
     @classifieds = Classified.find(:all)
   end
   def show

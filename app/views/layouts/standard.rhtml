@@ -16,24 +16,24 @@
 				<%= yield -%>
 				</div>
 				<div id="sidebar">
-					<%= form_remote_tag(:url => {:action => 'email'}, :multipart => true) -%>
+					<% form_remote_tag(:url => {:action => 'email'}, :multipart => true) do %>
 					Receive a word a day to your email! <br /><br />
 					E-mail: <%= text_field "user", "email" -%><br />
 					<%= submit_tag 'Sign Up' -%>
-					<%= end_form_tag -%>	
+					<% end %>	
 				
 					<% unless session[:user] %>
 					<small><p>Admin <%= link_to_function('Login', "Element.show('admin')") %></p>
 					<div id="admin" style="display: none;"></small>
 						
 					
-				<%= start_form_tag({:controller => 'user', :action => 'login'}, {:id =>  "login_form"}) -%>	
+				<% form_tag({:controller => 'user', :action => 'login'}, {:id =>  "login_form"}) do %>	
 				<label for="user_login">Admin:</label><br />
 				<%= text_field :user, :login -%><br />
 				<label for="user_login">Password:</label><br />
 				<%= password_field :user, :password -%><br />
 				<%= submit_tag 'login' -%>
-				<%= end_form_tag%>
+				<% end %>
 			
 				<% else %>
 				<p><%= "Welcome #{session[:user].login}!" -%></p>

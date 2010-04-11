@@ -14,7 +14,7 @@ class ClassifiedMailer < ActionMailer::Base
       
   end
 
-  def word_with_attachment(email, classified, url, sent_at = Time.now)
+  def word_with_attachment(email, classified, sent_at = Time.now)
     @subject    = 'Hawaiian Word of the Day'
     @recipients = email
     @from       = 'no-reply@yourdomain.com'
@@ -22,7 +22,7 @@ class ClassifiedMailer < ActionMailer::Base
     @body["word"]       = classified.title 
     @body["location"]       = classified.location
     @body["definition"] = classified.description
-    @body["url"]       = url 
+    @body["classified"]       = classified 
     # unless classified.picture.blank?
     #       attachment :body => classified.picture, :content_type => classified.content_type
       

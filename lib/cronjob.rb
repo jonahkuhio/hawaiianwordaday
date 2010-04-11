@@ -13,9 +13,8 @@ class Cronjob
 
       # send word a day email
       puts "sending word a day email"
-      url = "http://localhost:3000/classified/#{word.id}"
       EmailSubscription.all.each do |email_subscription|
-        ClassifiedMailer.deliver_word_with_attachment(email_subscription.email, word, url)
+        ClassifiedMailer.deliver_word_with_attachment(email_subscription.email, word)
       end
     else
       puts "there were no unused words left. whoops."

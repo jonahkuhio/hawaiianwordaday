@@ -1,6 +1,4 @@
 class UserController < ApplicationController
-  layout 'standard'
-  
   def signup
     case request.method
       when :post

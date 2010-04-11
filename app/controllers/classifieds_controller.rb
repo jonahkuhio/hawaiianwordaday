@@ -1,6 +1,4 @@
 class ClassifiedsController < ApplicationController
-  layout 'standard'
-  
   def index
     @classifieds = Classified.find(:all)
   end
@@ -10,7 +8,7 @@ class ClassifiedsController < ApplicationController
   end
  
   def new
-    redirect_to :action => 'list' if session[:user].blank?
+    redirect_to root_path if session[:user].blank?
     @classified = Classified.new
     @categories = Category.find(:all)
   end

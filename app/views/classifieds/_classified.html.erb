@@ -1,6 +1,1 @@
-<li><%= link_to classified.title, {:action => 'show', :id => classified.id} -%>
-	<% if can_edit?(classified) %>
-<small> <%= link_to 'Edit', {:action => 'edit', :id => classified.id} %></small>
-<small><%= link_to "Delete", {:action => 'delete', :id => classified.id}, :confirm => "Are you sure you want to delete this item?" %></small>
-<% end %>
-</li>
+<li><%= link_to classified.title, classified_path(classified) -%></li>

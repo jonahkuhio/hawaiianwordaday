@@ -1,10 +1,9 @@
 class CategoriesController < ApplicationController
-  layout 'standard'
   before_filter :logged_in?, :except => [:show]
+  
   def index
     @categories = Category.find(:all)
   end
-  
   
   def show
       @category = Category.find(params[:id])

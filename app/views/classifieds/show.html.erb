@@ -17,6 +17,11 @@
 	<%= image_tag(url_for({:action => 'image', :id => @classified.id})) -%>
 	<% end %>
 	<br />
+	
+	<% if can_edit?(@classified) %>
+	<%= admin_tools_for (@classified) %>
+	<% end %>
+	
 	<hr />
 	
 	<p>Interested?  <%= link_to_function('E-mail to a friend', "Element.show('email')") %></p>

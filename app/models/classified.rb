@@ -8,6 +8,6 @@ class Classified < ActiveRecord::Base
   
   
 
-  validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
+  #validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
   # cryptic code above is standard validation of emails jfv
 end

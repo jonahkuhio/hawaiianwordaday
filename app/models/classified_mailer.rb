@@ -20,9 +20,9 @@ end
     @recipients = email
     @from       = 'no-reply@yourdomain.com'
     @sent_on    = sent_at
-    @body["title"]       = classified.title 
+    @body["word"]       = classified.title 
     @body["location"]       = classified.location
-    @body["description"] = classified.description
+    @body["definition"] = classified.description
     @body["url"]       = url 
     unless classified.picture.blank?
       attachment :body => classified.picture, :content_type => classified.content_type

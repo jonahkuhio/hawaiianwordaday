@@ -13,9 +13,9 @@
 	
 	<p><%= @classified.description %></p>
 	
-	<% unless @classified.picture.blank? %>
-	<%= image_tag(url_for({:action => 'image', :id => @classified.id})) -%>
-	<% end %>
+	<%# unless @classified.picture.blank? %>
+	<%#= image_tag(url_for({:action => 'image', :id => @classified.id})) -%>
+	<%# end %>
 	<br />
 	
 	<% if can_edit?(@classified) %>

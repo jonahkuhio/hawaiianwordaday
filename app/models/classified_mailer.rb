@@ -9,8 +9,8 @@ class ClassifiedMailer < ActionMailer::Base
     @body["location"]       = classified.location
     @body["description"] = classified.description
     @body["url"]       = url 
-    unless classified.picture.blank?
-      attachment :body => classified.picture, :content_type => classified.content_type
+    # unless classified.picture.blank?
+    #       attachment :body => classified.picture, :content_type => classified.content_type
       
   end
 end
@@ -24,8 +24,8 @@ end
     @body["location"]       = classified.location
     @body["definition"] = classified.description
     @body["url"]       = url 
-    unless classified.picture.blank?
-      attachment :body => classified.picture, :content_type => classified.content_type
+    # unless classified.picture.blank?
+    #       attachment :body => classified.picture, :content_type => classified.content_type
       
   end
 end

@@ -11,7 +11,7 @@
  :update => 'classifieds',
  :loading => 'Element.show("loading")',
  :complete => 'Element.hide("loading")',
- :url => { :controller => 'classified', :action => 'search' },
+ :url => search_classifieds_path,
  :with => "'search=' + encodeURIComponent(value)"
 %>
 <div id="loading" style="display:none;"><p>Searching...</P></div>

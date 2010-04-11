@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
- map.resources :classifieds
+ map.resources :classifieds, :collection => [:search]
  
  # map.with_options(:controller => 'classified') do |classified|
  #    classified.connect 'classifieds/new', :action => 'new'
@@ -19,7 +19,7 @@ ActionController::Routing::Routes.draw do |map|
  #  end
  
  map.connect 'profile/:login', :controller => 'user', :action => 'show'
- map.home '', :controller => 'classifieds'
+ map.root :controller => 'classifieds'
   # The priority is based upon order of creation: first created -> highest priority.
   
   # Sample of regular route:

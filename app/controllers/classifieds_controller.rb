@@ -1,22 +1,27 @@
 class ClassifiedsController < ApplicationController
+  layout 'standard'
+  
   def index
     @classifieds = Classified.find(:all)
   end
+  
   def show
     @classified = Classified.find(params[:id])
   end
- layout 'standard'
+ 
   def new
     redirect_to :action => 'list' if session[:user].blank?
     @classified = Classified.new
-     @categories = Category.find(:all)
+    @categories = Category.find(:all)
   end
+  
   def create
+    @categories = Category.find(:all)
     @classified = Classified.new(params[:classified])
     @classified.user = session[:user]
     @classified.email = session[:user].email
-      if @classified.save
-      redirect_to home_url
+    if @classified.save
+      redirect_to root_path
     else
       render :action => 'new'
     end
@@ -30,7 +35,7 @@ class ClassifiedsController < ApplicationController
     @classified = Classified.find(params[:id])
      @categories = Category.find(:all)
     if @classified.update_attributes(params[:classified])
-      redirect_to :action => 'show', :id => @classified
+      redirect_to classified_path(@classified)
     else
       render :action => 'edit'
     end
@@ -47,10 +52,12 @@ class ClassifiedsController < ApplicationController
       end
     end
   end
-  def delete
+  
+  def destroy
     Classified.find(params[:id]).destroy
-    redirect_to :action => 'list'
+    redirect_to root_path
   end
+  
   def contact
     @classified = Classified.find(params[:id])
     ClassifiedMailer.deliver_contact(@classified,params[:contact])

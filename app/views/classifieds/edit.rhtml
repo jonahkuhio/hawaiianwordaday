@@ -1,6 +1,6 @@
 <h1>Editing Classified: <%= @classified.title -%></h1>
 
-<%= start_form_tag ({:action => 'update', :id => @classified}, :multipart => true) %>
+<% form_tag (classified_path(@classified), :multipart => true, :method => :put) do %>
 
 	<p><label for="classified_title">Word</label><br />
 	<%= text_field 'classified', 'title' %></p>
@@ -16,6 +16,6 @@
 	
 	
 	<%= submit_tag "Save changes" %>
-<%= end_form_tag %>
+<% end %>
 
 <%= link_to 'Back', {:action => 'list'} %>

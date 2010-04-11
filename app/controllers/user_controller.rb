@@ -6,23 +6,24 @@ class UserController < ApplicationController
       when :post
         @user = User.new(params[:user])
         if @user.save
-          redirect_to :controller => 'classified', :action => 'list'
+          redirect_to root_path
         end
     end
   end
   
   def login
-    if session[:user] = User.authenticate(params[:user][:login], params[:user][:password])
-      redirect_to :controller => 'classified', :action => 'list'
-    else
-      redirect_to :controller => 'classified', :action => 'list'
+    unless session[:user] = User.authenticate(params[:user][:login], params[:user][:password])
+      flash[:error] = "Login failed"
     end
+    redirect_to root_path
   end
+  
   def logout
     reset_session
-    redirect_to :controller => 'classified', :action => 'list'
+    redirect_to root_path
   end
+  
   def show
-    @user = User.find(:first, :conditions => ["login = ?", params[:login]])
+    @user = User.find_by_login(params[:login])
   end
 end

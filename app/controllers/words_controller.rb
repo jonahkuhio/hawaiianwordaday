@@ -27,27 +27,27 @@ class WordsController < ApplicationController
   end
   
   def edit
-    @classified = Classified.find(params[:id])
+    @word = Word.find(params[:id])
     @categories = Category.find(:all)
   end
   
   def update
-    @classified = Classified.find(params[:id])
+    @word = Word.find(params[:id])
      @categories = Category.find(:all)
-    if @classified.update_attributes(params[:classified])
-      redirect_to classified_path(@classified)
+    if @word.update_attributes(params[:word])
+      redirect_to word_path(@word)
     else
       render :action => 'edit'
     end
   end
   
   def search
-    @classifieds = Classified.find(:all, :conditions => ["lower(title) like ?", "%" + params[:search].downcase + "%"])
+    @words = Word.find(:all, :conditions => ["lower(term) like ?", "%" + params[:search].downcase + "%"])
     if params['search'].to_s.size < 1
       render :nothing => true
     else
-      if @classifieds.size > 0
-        render :partial => 'classified', :collection => @classifieds
+      if @words.size > 0
+        render :partial => 'word', :collection => @words
       else
         render :text => "<li>No results found</li>", :layout => false
       end
@@ -55,7 +55,7 @@ class WordsController < ApplicationController
   end
   
   def destroy
-    Classified.find(params[:id]).destroy
+    Word.find(params[:id]).destroy
     redirect_to root_path
   end
   

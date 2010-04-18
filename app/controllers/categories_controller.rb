@@ -31,4 +31,4 @@ class CategoriesController < ApplicationController
       return true
     end
   end
-      end
+end

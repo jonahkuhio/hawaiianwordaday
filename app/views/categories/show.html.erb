@@ -1,6 +1,6 @@
 <h1> <%= @category.name -%></h1>
 <ul>
-<% @category.classifieds.each do |c| %>
-<li><%= link_to c.title, classified_path(c) -%></li>
+<% @category.words.each do |c| %>
+<li><%= link_to c.term, word_path(c) -%></li>
 <% end %>
 </ul>

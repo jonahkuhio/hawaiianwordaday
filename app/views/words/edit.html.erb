@@ -1,18 +1,18 @@
-<h1>Editing Classified: <%= @classified.title -%></h1>
+<h1>Editing Word: <%= @word.term -%></h1>
 
-<% form_tag (classified_path(@classified), :multipart => true, :method => :put) do %>
+<% form_for @word do |f| %> 
 
-	<p><label for="classified_title">Word</label><br />
-	<%= text_field 'classified', 'title' %></p>
+  <p><%= f.label :term, 'Word' %><br />
+	<%= f.text_field :term %></p>
 	
-	<p><label for="classified_location">Definition</label><br />
-	<%= text_field 'classified', 'location' %></p>
+      <p><%= f.label :definition %><br />
+	<%= f.text_field :definition %></p>
 	
-	<p><label for="classified_description">Description</label><br />
-	<%= text_area 'classified', 'description' %></p>
+      <p><%= f.label :word_in_context %><br />
+	<%= f.text_area :word_in_context %></p>
 	
-	<p><label for="classified_category">Category</label><br />
-	<%= collection_select(:classified, :category_id, @categories, :id, :name) %></p>	
+	<p><label for="word_category">Category</label><br />
+	<%= collection_select(:word, :category_id, @categories, :id, :name) %></p>	
 	
 	
 	<%= submit_tag "Save changes" %>

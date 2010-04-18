@@ -1,5 +1,5 @@
 # Settings specified here will take precedence over those in config/environment.rb
-config.gem 'shoulda'
+
 
 # The test environment is used exclusively to run your application's
 # test suite.  You never need to work with it otherwise.  Remember that
@@ -28,3 +28,6 @@ config.action_mailer.default_url_options = { :host => "example.com" }
 # This is necessary if your schema can't be completely dumped by the schema dumper,
 # like if you have constraints or database-specific column types
 # config.active_record.schema_format = :sql
+
+config.gem 'shoulda'
+config.gem 'factory_girl'

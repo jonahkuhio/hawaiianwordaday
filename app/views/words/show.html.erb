@@ -1,25 +1,25 @@
-<h1><%= @classified.title %></h1>
+<h1><%= @word.term %></h1>
 
 
     <br />
 	<p>
-	<strong>Definition: </strong> <%= @classified.location %><br />
-	<% if not @classified.category.blank? %>
-	<strong>Category: </strong> <%= link_to @classified.category.name, category_path(@classified.category) %><br />
+	<strong>Definition: </strong> <%= @word.definition %><br />
+	<% if not @word.category.blank? %>
+	<strong>Category: </strong> <%= link_to @word.category.name, category_path(@word.category) %><br />
 	<%end%>	
 	<br />
 	<strong>Word in Context: </strong> 
 
 	
-	<p><%= @classified.description %></p>
+	<p><%= @word.word_in_context %></p>
 	
-	<%# unless @classified.picture.blank? %>
-	<%#= image_tag(url_for({:action => 'image', :id => @classified.id})) -%>
+	<%# unless @word.picture.blank? %>
+	<%#= image_tag(url_for({:action => 'image', :id => @word.id})) -%>
 	<%# end %>
 	<br />
 	
-	<% if can_edit?(@classified) %>
-	<%= admin_tools_for (@classified) %>
+	<% if can_edit?(@word) %>
+	<%= admin_tools_for (@word) %>
 	<% end %>
 	
 	<hr />
@@ -28,7 +28,7 @@
 
 
 <div id="email" style="display: none;">
-	<% form_remote_tag(:url => {:action => 'email', :id => @classified.id}, :multipart => true) do -%>
+	<% form_remote_tag(:url => {:action => 'email', :id => @word.id}, :multipart => true) do -%>
 	E-mail: <%= text_field "user", "email" -%><br />
 	<%= submit_tag 'Email Word' -%>
 	<% end -%>

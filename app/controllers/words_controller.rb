@@ -1,24 +1,25 @@
 class WordsController < ApplicationController
+  before_filter :require_user, :only => [:new, :create]
+
   def index
     @words = Word.find(:all)
   end
   
   def show
-    @classified = Classified.find(params[:id])
+    @word = Word.find(params[:id])
   end
  
   def new
-    redirect_to root_path if session[:user].blank?
-    @classified = Classified.new
+    @word = Word.new
     @categories = Category.find(:all)
   end
   
   def create
     @categories = Category.find(:all)
-    @classified = Classified.new(params[:classified])
-    @classified.user = session[:user]
-    @classified.email = session[:user].email
-    if @classified.save
+    @word = Word.new(params[:word])
+    @word.user = session[:user]
+    @word.email = session[:user].email
+    if @word.save
       redirect_to root_path
     else
       render :action => 'new'

@@ -7,4 +7,11 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  protected
+  def require_user
+    unless session[:user]
+      flash[:error] = 'You must be logged in to view that page'
+      redirect_to root_path
+    end
+  end
 end

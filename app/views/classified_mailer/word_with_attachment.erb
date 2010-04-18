@@ -1,5 +1,7 @@
-The word of the day is <%= @word %>.
+The word of the day is <%= @term %>.
 
-<%= @definition %>
+Definition: <%= @definition %>
 
-See it on the web site: <%= classified_url(@classified) %>
+<%= @word_in_context %>
+
+See it on the web site: <%= word_url(@word) %>

@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class EmailSubscriptionTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  context EmailSubscription do
+    should "generate a token when created" do
+      assert_not_nil Factory(:email_subscription).token
+    end
   end
 end

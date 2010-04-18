@@ -9,3 +9,7 @@ Factory.define :word do |w|
   w.definition 'Hello'
   w.word_in_context 'Aloha, bruddah'
 end
+
+Factory.define :email_subscription do |es|
+  es.email 'bob@example.com'
+end

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100417234542) do
+ActiveRecord::Schema.define(:version => 20100418021302) do
 
   create_table "categories", :force => true do |t|
     t.string "name"
@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(:version => 20100417234542) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "token"
   end
+
+  add_index "email_subscriptions", ["token"], :name => "index_email_subscriptions_on_token"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id"
@@ -34,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20100417234542) do
     t.text     "definition"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "word_in_context"
   end
 
   create_table "users", :force => true do |t|

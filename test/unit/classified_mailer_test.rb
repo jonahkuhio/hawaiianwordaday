@@ -1,8 +1,7 @@
 require 'test_helper'
 
 class ClassifiedMailerTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  context ClassifiedMailer do
+    should_eventually "be tested"
   end
 end

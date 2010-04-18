@@ -8,4 +8,12 @@ class WordTest < ActiveSupport::TestCase
   should_validate_presence_of :definition
   should_validate_presence_of :word_in_context
   should_validate_uniqueness_of :term
+
+  should "validate term uniqueness ignoring case" do
+    @word = Factory(:word)
+    e = assert_raise(ActiveRecord::RecordInvalid) do
+      Factory(:word, :term => @word.term.upcase)
+    end
+    assert_equal "Validation failed: Term has already been taken", e.message
+  end
 end

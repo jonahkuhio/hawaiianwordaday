@@ -14,6 +14,7 @@ class Cronjob
       # send word a day email
       puts "sending word a day email"
       EmailSubscription.all.each do |email_subscription|
+        email_subscription.update_attribute(:token, ActiveSupport::SecureRandom.hex(10)) unless email_subscription.token
         ClassifiedMailer.deliver_word_with_attachment(email_subscription, word)
       end
     else

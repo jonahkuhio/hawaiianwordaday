@@ -5,3 +5,6 @@ Definition: <%= @definition %>
 <%= @word_in_context %>
 
 See it on the web site: <%= word_url(@word) %>
+
+--
+To unsubscribe, go to <%= email_subscription_url(:id => @email_subscription.token) %>.

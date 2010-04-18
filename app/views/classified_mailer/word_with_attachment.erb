@@ -7,4 +7,4 @@ Definition: <%= @definition %>
 See it on the web site: <%= word_url(@word) %>
 
 --
-To unsubscribe, go to <%= email_subscription_url(:id => @email_subscription.token) %>.
+To unsubscribe, go to <%= unsubscribe_url(:id => @email_subscription.token) %>.

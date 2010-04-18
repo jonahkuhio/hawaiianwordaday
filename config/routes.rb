@@ -3,6 +3,8 @@ ActionController::Routing::Routes.draw do |map|
  map.resources :email_subscriptions
  map.resources :categories
  
+ map.unsubscribe 'unsubscribe/:id', :controller => 'email_subscriptions', :action => 'destroy'
+
  map.connect 'profile/:login', :controller => 'user', :action => 'show'
  
  map.root :controller => 'words'

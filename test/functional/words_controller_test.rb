@@ -118,8 +118,12 @@ class WordsControllerTest < ActionController::TestCase
       end
     end
 
-    context "GET contact" do
-
+    context "POST email" do
+      setup do
+        @word = Factory(:word)
+        post :email, :id => @word.id, :user => {:email => 'bob@example.com'}
+      end
+      should_respond_with :success 
     end
 
   end

@@ -59,23 +59,22 @@ class WordsController < ApplicationController
     redirect_to root_path
   end
   
-  def contact
-    @classified = Classified.find(params[:id])
-    ClassifiedMailer.deliver_contact(@classified,params[:contact])
-    return if request.xhr?
-    render :nothing => true
-  end
+  #def contact
+    #@classified = Classified.find(params[:id])
+    #ClassifiedMailer.deliver_contact(@classified,params[:contact])
+    #return if request.xhr?
+    #render :nothing => true
+  #end
   
-  def image
-    @image = Classified.find(params[:id])
-    send_data @image.picture, :filename => "photo.jpg", :type => @image.content_type, :disposition => "inline"
-  end
+  #def image
+    #@image = Classified.find(params[:id])
+    #send_data @image.picture, :filename => "photo.jpg", :type => @image.content_type, :disposition => "inline"
+  #end
   
   def email
-    @classified = Classified.find(params[:id])
-    url = "#{request.env["SERVER_NAME"]}/classified/#{@classified.id}"
+    @word = Word.find(params[:id])
     if request.post?
-      ClassifiedMailer.deliver_classified_with_attachment(params[:user][:email], @classified, url)
+      ClassifiedMailer.deliver_word_from_friend(params[:user][:email], @word)
     end
   end
 end

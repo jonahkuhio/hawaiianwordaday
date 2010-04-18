@@ -1,10 +1,10 @@
-class Classified < ActiveRecord::Base
+class Word < ActiveRecord::Base
   #validation of records jfv
   belongs_to :category
   belongs_to :user
-  validates_presence_of :title, :message => "cannot be blank. Make your title descriptive"
-  validates_presence_of :location
-  validates_presence_of :description
+  validates_presence_of :term
+  validates_presence_of :definition
+  validates_presence_of :word_in_context
   
   
 

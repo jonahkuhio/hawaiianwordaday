@@ -9,24 +9,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100411023245) do
+ActiveRecord::Schema.define(:version => 20100417234542) do
 
   create_table "categories", :force => true do |t|
     t.string "name"
-  end
-
-  create_table "classifieds", :force => true do |t|
-    t.string   "title"
-    t.float    "price"
-    t.string   "location"
-    t.text     "description"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "category_id"
-    t.string   "content_type",                       :default => "image/png"
-    t.binary   "picture",      :limit => 2147483647
-    t.integer  "user_id"
   end
 
   create_table "email_subscriptions", :force => true do |t|
@@ -41,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20100411023245) do
     t.datetime "updated_at"
   end
 
-  add_index "sessions", ["session_id"], :name => "sessions_session_id_index"
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
 
   create_table "unused_words", :force => true do |t|
     t.string   "word"
@@ -54,6 +40,18 @@ ActiveRecord::Schema.define(:version => 20100411023245) do
     t.string "login"
     t.string "password"
     t.string "email"
+  end
+
+  create_table "words", :force => true do |t|
+    t.string   "term"
+    t.float    "price"
+    t.string   "definition"
+    t.text     "word_in_context"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "category_id"
+    t.integer  "user_id"
   end
 
 end

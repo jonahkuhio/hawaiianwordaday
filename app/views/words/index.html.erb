@@ -1,0 +1,39 @@
+<% if @words.blank? %>
+
+
+<p>There are not any words in the system </p>
+<%else%>
+<p>These are the current Hawaiian words in our system </p>
+<%= text_field "word", "title" -%>
+
+<%= observe_field :word_title,
+ :frequency => 1.0,
+ :update => 'words',
+ :loading => 'Element.show("loading")',
+ :complete => 'Element.hide("loading")',
+ :url => search_words_path,
+ :with => "'search=' + encodeURIComponent(value)"
+%>
+<div id="loading" style="display:none;"><p>Searching...</P></div>
+<ul id="words">
+</ul>
+<% previous_day = "" %>
+<% @words.each do |word| %>
+<% if word.created_at.strftime("%m/%d/%Y").to_s!= previous_day %>
+	<h4><%= word.created_at.strftime("%B %d, %Y") %></h4>
+	<% end %>
+	<p class="word">
+		<%= link_to word.term, {:action=> 'show', :id => word.id} -%>
+		<% if can_edit?(word) %>
+		<%= admin_tools_for (word) %>
+		<% end %>
+		</p>
+		<% previous_day = word.created_at.strftime("%m/%d/%Y").to_s %>
+		<% end %>
+<% end %>
+
+	
+	
+<% if logged_in? %>
+<p>    <%= link_to "Add new word", new_word_path %></p>
+<% end %>

@@ -10,10 +10,10 @@ module ApplicationHelper
   def cloud(categories)
     return if categories.blank?
     output = ""
-    mid = categories.collect {|i| i.classifieds.count}.max / 1.5
+    mid = categories.collect {|i| i.words.count}.max / 1.5
     
     categories.each do |c|
-      size = 100 * c.classifieds.count / mid
+      size = 100 * c.words.count / mid
       size = 75 if size < 75
       output << link_to(c.name, category_path(c), :style => "font-size: #{size}%") << " "
     end

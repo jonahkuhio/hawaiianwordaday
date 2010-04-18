@@ -1,11 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
- map.resources :classifieds, :collection => [:search]
+ map.resources :words, :collection => [:search]
  map.resources :email_subscriptions
  map.resources :categories
  
  map.connect 'profile/:login', :controller => 'user', :action => 'show'
  
- map.root :controller => 'classifieds'
+ map.root :controller => 'words'
   # The priority is based upon order of creation: first created -> highest priority.
   
   # Sample of regular route:

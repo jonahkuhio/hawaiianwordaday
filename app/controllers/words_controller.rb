@@ -1,6 +1,6 @@
-class ClassifiedsController < ApplicationController
+class WordsController < ApplicationController
   def index
-    @classifieds = Classified.find(:all)
+    @words = Word.find(:all)
   end
   
   def show
